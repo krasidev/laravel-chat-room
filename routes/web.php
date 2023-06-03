@@ -13,6 +13,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+const routes = [
+    'confirm' => false,
+    'reset' => false
+];
+
+Auth::routes(routes);
+
+// Guest users
+Route::middleware('guest')->group(function () {
+    // Overwriting login forms
+    if (routes['login'] ?? true) {
+        Route::get('/', function () {
+            return redirect()->route('login');
+        });
+
+        Route::inertia('/login', 'Auth/Login', [
+            'lang.content.login' => __('content.login')
+        ])->name('login');
+    }
+
+    // Overwriting register forms
+    if (routes['register'] ?? true) {
+        Route::inertia('/register', 'Auth/Register', [
+            'lang.content.register' => __('content.register')
+        ])->name('register');
+    }
+});
+
+// Auth users
+Route::middleware('auth')->group(function () {
+    // Home
+    Route::inertia('/home', 'Home', [
+        'lang.content.home' => __('content.home')
+    ]);
 });
