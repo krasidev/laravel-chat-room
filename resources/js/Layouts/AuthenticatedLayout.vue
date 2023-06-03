@@ -17,6 +17,11 @@
                             {{ $page.props.lang.menu.home }}
                         </Link>
                     </li>
+                    <li class="nav-item">
+                        <Link :href="route('users.index')" class="nav-link" :class="{ 'active': $page.component === 'Users/Index' }">
+                            {{ $page.props.lang.menu.users.text }}
+                        </Link>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

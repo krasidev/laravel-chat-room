@@ -28,5 +28,15 @@ return [
     'home' => [
         'content' => 'You are logged in!'
     ],
-
+    'users' => [
+        'table' => [
+            'headers' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'email' => 'E-Mail Address',
+                'created_at' => 'Created At',
+                'updated_at' => 'Updated At'
+            ]
+        ]
+    ],
 ];
