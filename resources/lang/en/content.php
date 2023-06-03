@@ -25,8 +25,16 @@ return [
             'register' => 'Register'
         ]
     ],
-    'home' => [
-        'content' => 'You are logged in!'
+    'chat-room-notifications' => [
+        'labels' => [
+            'created_at' => 'hour',
+            'notifiable_id' => 'Notifiable',
+            'message' => 'Message'
+        ],
+        'buttons' => [
+            'hidden-message' => 'Hidden Message',
+            'send' => 'Send'
+        ]
     ],
     'users' => [
         'table' => [

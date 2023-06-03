@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatRoomNotificationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,10 +45,8 @@ Route::middleware('guest')->group(function () {
 
 // Auth users
 Route::middleware('auth')->group(function () {
-    // Home
-    Route::inertia('/home', 'Home', [
-        'lang.content.home' => __('content.home')
-    ]);
+    //Chat Room Notification
+    Route::resource('chat-room-notifications', ChatRoomNotificationController::class)->only(['index', 'store']);
 
     //Users
     Route::resource('users', UserController::class)->only('index');

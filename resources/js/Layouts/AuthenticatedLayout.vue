@@ -13,8 +13,8 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <Link href="/home" class="nav-link" :class="{ 'active': $page.component === 'Home' }">
-                            {{ $page.props.lang.menu.home }}
+                        <Link :href="route('chat-room-notifications.index')" class="nav-link" :class="{ 'active': $page.component === 'ChatRoomNotifications/Index' }">
+                            {{ $page.props.lang.menu['chat-room-notifications'].text }}
                         </Link>
                     </li>
                     <li class="nav-item">
