@@ -27,7 +27,7 @@ return [
     ],
     'chat-room-notifications' => [
         'labels' => [
-            'created_at' => 'hour',
+            'hour' => 'hour',
             'notifiable_id' => 'Notifiable',
             'message' => 'Message'
         ],

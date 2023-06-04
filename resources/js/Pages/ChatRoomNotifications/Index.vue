@@ -15,8 +15,8 @@
                         'text-secondary': auth.user.id != chatRoomNotification.data.author.id,
                         'text-primary': auth.user.id == chatRoomNotification.data.author.id
                     }">
-                        {{ lang.content['chat-room-notifications'].labels.created_at }}
-                        ({{ chatRoomNotification.created_at }})
+                        {{ lang.content['chat-room-notifications'].labels.hour }}
+                        ({{ chatRoomNotification.hour }})
                         {{ chatRoomNotification.data.author.name }}
                     </label>
                     <textarea :id="'chat-room-notification-' + index" class="form-control w-75" readonly>{{ chatRoomNotification.data.message }}</textarea>

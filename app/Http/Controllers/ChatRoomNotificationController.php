@@ -6,7 +6,6 @@ use App\Http\Requests\StoreChatRoomNotificationRequest;
 use App\Models\User;
 use App\Notifications\ChatRoom;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Support\Facades\Notification;
 use Inertia\Inertia;
 
@@ -17,19 +16,9 @@ class ChatRoomNotificationController extends Controller
      */
     public function index(Request $request)
     {
-        $chatRoomNotifications = DatabaseNotification::where([
-            'type' => 'App\Notifications\ChatRoom',
-            'notifiable_id' => $request->user()->id
-        ])->orderBy('created_at', 'desc')->take(50)->get();
-
         return Inertia::render('ChatRoomNotifications/Index', [
             'lang.content.chat-room-notifications' => __('content.chat-room-notifications'),
-            'chatRoomNotifications' => $chatRoomNotifications->map(function ($chatRoomNotification) {
-                return [
-                    'data' => $chatRoomNotification->data,
-                    'created_at' => $chatRoomNotification->created_at->format('H:m')
-                ];
-            }),
+            'chatRoomNotifications' => $request->user()->chatRoomNotifications,
             'users' => User::whereNot('id', $request->user()->id)->get()
         ]);
     }

@@ -44,4 +44,14 @@ class User extends Authenticatable
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
+
+    /**
+     * Chat Room Notifications.
+     */
+    public function chatRoomNotifications()
+    {
+        return $this->notifications()->where('type', 'App\Notifications\ChatRoom')
+            ->selectRaw('*, DATE_FORMAT(created_at, "%H:%m") AS hour')
+            ->take(50);
+    }
 }
