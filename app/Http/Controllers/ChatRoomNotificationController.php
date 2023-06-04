@@ -18,7 +18,7 @@ class ChatRoomNotificationController extends Controller
     {
         return Inertia::render('ChatRoomNotifications/Index', [
             'lang.content.chat-room-notifications' => __('content.chat-room-notifications'),
-            'chatRoomNotifications' => $request->user()->chatRoomNotifications,
+            'chatRoomNotifications' => array_reverse($request->user()->chatRoomNotifications->toArray()),
             'users' => User::whereNot('id', $request->user()->id)->get()
         ]);
     }

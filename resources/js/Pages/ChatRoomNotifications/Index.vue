@@ -89,8 +89,12 @@
         },
         methods: {
             submit() {
-                router.post(route('chat-room-notifications.store'), this.notification);
-                this.notification.message = null;
+                router.post(route('chat-room-notifications.store'), this.notification, {
+                    preserveScroll: true,
+                    onSuccess: (res) => {
+                        this.notification.message = null;
+                    },
+                });
             }
         }
     }
