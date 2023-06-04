@@ -87,6 +87,13 @@
                 notification: {}
             }
         },
+        mounted() {
+            Echo.private('App.Models.User.' + this.auth.user.id).notification((notification) => {
+                router.visit(route('chat-room-notifications.index'), {
+                    preserveScroll: true
+                });
+            });
+        },
         methods: {
             submit() {
                 router.post(route('chat-room-notifications.store'), this.notification, {
